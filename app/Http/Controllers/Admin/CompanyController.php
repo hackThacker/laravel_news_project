@@ -156,6 +156,7 @@ class CompanyController extends Controller
     {
       $company = Company::find($id);
       $company->delete();
+      toast('Record Deleted successfully!', 'success');
       return redirect()->back();
     }
 }
