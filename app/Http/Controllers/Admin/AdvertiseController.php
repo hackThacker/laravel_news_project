@@ -32,7 +32,7 @@ class AdvertiseController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'company_name' => 'required|string|max:35',
+            'company_name' => 'required|string|max:75',
             'number' => 'required|string|max:10',
             'link' => 'required|string|max:255',
         ]);
@@ -58,7 +58,7 @@ class AdvertiseController extends Controller
         toast('Record added successfully!', 'success');
 
         // Redirect with a success message
-        return redirect()->route('advertise.index');
+        return redirect()->back();
     }
 
     /**
@@ -114,7 +114,7 @@ class AdvertiseController extends Controller
         toast('Record updated successfully!', 'success');
 
         // Redirect with a success message
-        return redirect()->route('advertise.index');
+        return redirect()->back();
     }
 
     /**
@@ -125,7 +125,7 @@ class AdvertiseController extends Controller
         $advertise = advertise::find($id);
         $advertise->delete();
         toast('Delete  successfully!', 'success');
-        return redirect()->route('advertise.index');
+        return redirect()->back();
 
     }
 }

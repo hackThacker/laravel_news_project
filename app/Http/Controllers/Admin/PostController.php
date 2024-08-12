@@ -93,6 +93,7 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             'images' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'categories' => 'required',
         ]);
 
         // Create a new Company instance

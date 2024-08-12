@@ -74,7 +74,7 @@ class CompanyController extends Controller
     toast('Record added successfully!', 'success');
 
     // Redirect with a success message
-    return redirect()->route('company.index')->with('update', 'Company update successfully.');
+    return redirect()->back();
 }
 
 
@@ -146,7 +146,7 @@ class CompanyController extends Controller
 
 
     // Redirect with a success message
-    return redirect()->route('company.index')->with('success', 'Company created successfully.');
+    return redirect()->back();
     }
 
     /**

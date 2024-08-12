@@ -43,7 +43,7 @@ class Categorycontroller extends Controller
         $categories->save();
         toast('Record added successfully!', 'success');
         // Redirect with a success message
-        return redirect()->route('category.index');
+        return redirect()->back();
     }
 
     /**
@@ -80,7 +80,7 @@ class Categorycontroller extends Controller
         $categories->update();
         toast('Record updated successfully!', 'success');
         // Redirect with a success message
-        return redirect()->route('category.index');
+        return redirect()->back();
     }
 
     /**
