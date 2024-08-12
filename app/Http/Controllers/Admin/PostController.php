@@ -15,7 +15,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = post::orderBy('id', 'desc')->get();
-        return view('admin.post.index', compact('posts'));
+        $categories = Category::all();
+        return view('admin.post.index', compact('posts','categories'));
     }
 
     /**
@@ -35,15 +36,16 @@ class PostController extends Controller
         // Validate the incoming request data
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:10',
+            'description' => 'required',
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'categories' => 'required',
         ]);
 
         // Create a new Company instance
         $post = new post();
 
         // Assign validated data to the model
-        $post->company_name = $validatedData['title'];
+        $post->title = $validatedData['title'];
         $post->description = $validatedData['description'];
 
         // Handle the file upload
@@ -56,6 +58,7 @@ class PostController extends Controller
 
         // Save the post$post$post instance to the database
         $post->save();
+        $post->categories()->attach($request->categories);
         toast('Record added successfully!', 'success');
 
         // Redirect with a success message
@@ -88,15 +91,15 @@ class PostController extends Controller
         // Validate the incoming request data
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:10',
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required',
+            'images' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Create a new Company instance
         $post =  post::find($id);
 
         // Assign validated data to the model
-        $post->company_name = $validatedData['title'];
+        $post->title = $validatedData['title'];
         $post->description = $validatedData['description'];
 
         // Handle the file upload
@@ -109,6 +112,7 @@ class PostController extends Controller
 
         // Save the post$post$post instance to the database
         $post->update();
+        $post->categories()->sync($request->categories);
         toast('Record updated successfully!', 'success');
         // Redirect with a success message
         return redirect()->back();

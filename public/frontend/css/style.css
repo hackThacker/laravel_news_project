@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --red: #ff0000;
+    --blue: #0866ff;
+    --yellow: #ffff02;
+    --green: #42b72a;
+}
+
+
+.description {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.title{
+    font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+.text-red{
+    color: var(--red);
+}
+.red{
+    background-color: var(--red);
+}
+.blue{
+    color:var(--blue);
+}
+.yellow {
+    color: var(--yellow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h5 {
+    font-size: 18px;
+}
