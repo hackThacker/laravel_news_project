@@ -27,6 +27,19 @@
     margin: auto;
 }
 
+nav {
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+}
+
+nav ul li {
+    font-size: 18px;
+    color: #fff;
+}
+
+nav ul li:hover {
+    color: var(--yellow);
+}
 .bg-red {
     background-color: var(--red);
 }

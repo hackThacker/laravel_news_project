@@ -28,10 +28,11 @@ class PageController extends Controller
 
     public function home()
     {
-        $latest_news = post::orderBy('id', 'desc')->first();
+        $latest_news = Post::orderBy('id', 'desc')->first();
+        $latest_post = post::orderBy('id','desc')->limit(4)->get();
         $posts = post::orderBy('id', 'desc')->limit(5)->get();
         $trending_news = post::orderBy('views', 'desc')->limit(5)->get();
-        return view('frontend.home', compact('latest_news', 'posts', 'trending_news')); // Return the view for the home page
+        return view('frontend.home', compact('latest_news', 'posts', 'trending_news','latest_post')); // Return the view for the home page
     }
     public function categories($slug)
     {

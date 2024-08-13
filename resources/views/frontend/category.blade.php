@@ -13,9 +13,11 @@
                                 <div class="md:col-span-3">
                                     <h3 class="text-xl font-semibold">{{ $post->title }}</h3>
                                     <p class="description mt-2 text-gray-700">{!! Str::limit(strip_tags($post->description), 250) !!}</p>
-                                    <small class="text-gray-600 flex items-center gap-2 mt-2">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        {{ $post->created_at->format('M d, Y') }}
+                                    <small class="text-gray-600 flex items-center gap-x-2">
+                                        <i class="fas fa-calendar-alt"></i>{{ $post->created_at->format('M d, Y') }}
+                                        <a href="{{ route('news', $post->id) }}"class="bg-red text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 px-2 py-1 text-xs inline-block ml-2 rounded">
+                                            Read More
+                                        </a>
                                     </small>
                                 </div>
                             </div>
@@ -25,9 +27,13 @@
                 <!-- Sidebar / Advertisements -->
                 <div class="md:col-span-4 space-y-4">
                     @foreach ($advertise as $ad)
-                        <a href="{{ $ad->link }}" target="_blank" class="block bg-white shadow-md rounded-lg overflow-hidden">
-                            <img src="{{ asset($ad->logo) }}" alt="Advertisement" class="w-full h-auto object-cover rounded">
+                    <div class="py-3 col-6">
+                        @if ($ad->status == 1)
+                        <a href="{{ $ad->link }}" target="_blank" class="block mt-2">
+                            <img src="{{ asset($ad->logo) }}" alt="Advertisement Image" class="w-full h-auto">
                         </a>
+                        @endif
+                    </div>
                     @endforeach
                 </div>
             </div>

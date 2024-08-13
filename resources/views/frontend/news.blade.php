@@ -12,10 +12,15 @@
                 <div class="md:col-span-1">
                     <div class="space-y-4">
                         @foreach ($advertise as $ad)
-                            <a href="{{ $ad->link }}" target="_blank" class="block">
-                                <img src="{{ asset($ad->logo) }}" alt="" class="w-full h-auto">
+                        <div class="py-3 col-6">
+                            @if ($ad->status == 1)
+                            <a href="{{ $ad->link }}" target="_blank" class="block mt-2">
+                                <img src="{{ asset($ad->logo) }}" alt="Advertisement Image" class="w-full h-auto">
                             </a>
+                            @endif
+                        </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>
